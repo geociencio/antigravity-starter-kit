@@ -32,6 +32,12 @@ Sigue el template [eda_template.py](examples/eda_template.py) para:
 - Correlaciones (Pearson/Spearman).
 - Identificación de outliers (Z-score o IQR).
 
+### 4. Integración con Jupyter
+Para flujos interactivos:
+1. Asegurar que `ipykernel` esté en las dependencias.
+2. Ejecutar: `uv run python -m ipykernel install --user --name {{PROJECT_NAME}}`.
+3. Usar el Kernel recién creado en VS Code o JupyterLab.
+
 ## Checklist de Calidad
 - [ ] ¿Se han documentado las transformaciones realizadas a los datos?
 - [ ] ¿Hay un reporte de calidad inicial (nulos, outliers)?
