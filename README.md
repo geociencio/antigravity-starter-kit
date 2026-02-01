@@ -1,5 +1,12 @@
 # {{PROJECT_NAME}} 🚀
 
+![Framework](https://img.shields.io/badge/framework-Antigravity%20Gen%202-6f42c1?style=for-the-badge)
+
+[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](#)
+[![Python](https://img.shields.io/badge/python-3.10+-3776AB?logo=python&logoColor=white)](#)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+[![License](https://img.shields.io/badge/license-GPL--3.0-orange.svg)](LICENSE)
+
 Este es el template oficial para iniciar proyectos de software (Python/QGIS) con una arquitectura enfocada en **Agentes de IA**.
 
 ## 🧠 Filosofía
