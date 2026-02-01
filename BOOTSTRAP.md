@@ -2,8 +2,12 @@
 
 Sigue estos pasos una vez hayas generado tu repositorio desde este template:
 
-## 1. Personalización de Identidad
-Modifica el archivo `pyproject.toml` con el nombre de tu proyecto, versión y autor.
+## 1. Personalización con Bootstrap
+Ejecuta el script de inicio para configurar el nombre de tu proyecto y el entorno automáticamente:
+```bash
+python bootstrap.py
+```
+El script reemplazará los placeholders en `pyproject.toml` y `README.md`, e inicializará el entorno con `uv sync`.
 
 ## 2. Configuración de Agentes
 Edita `scaffold/AGENTS.md` para definir quiénes son los colaboradores (humanos e IA) y qué skills tienen asignados.

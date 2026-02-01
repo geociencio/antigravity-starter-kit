@@ -1,4 +1,4 @@
-# Antigravity Framework Starter Kit 🚀
+# {{PROJECT_NAME}} 🚀
 
 Este es el template oficial para iniciar proyectos de software (Python/QGIS) con una arquitectura enfocada en **Agentes de IA**.
 

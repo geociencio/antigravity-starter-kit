@@ -1,5 +1,5 @@
 [project]
-name = "antigravity-project-template"
+name = "{{PROJECT_NAME}}"
 version = "1.0.0"
 description = "Starter kit for Antigravity-powered projects"
 readme = "README.md"
