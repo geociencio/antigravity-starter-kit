@@ -18,7 +18,7 @@ Antigravity no es solo código, es un sistema de colaboración Humano-IA que uti
 ## 🚀 Inicio Rápido
 
 ### 1. Usar este Template
-Haz clic en el botón verde **"Use this template"** en GitHub para crear tu nuevo repositorio.
+Haz clic en el botón verde **"Use this template"** en GitHub para crear tu nuevo repositorio y mas.
 
 ### 2. Configurar el Entorno
 Este framework utiliza `uv` para la gestión de dependencias:
