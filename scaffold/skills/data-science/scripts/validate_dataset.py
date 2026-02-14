@@ -4,9 +4,10 @@ import argparse
 import pandas as pd
 from pathlib import Path
 
+
 def validate_dataset(file_path: str):
     """Perform a sanity check on a dataset.
-    
+
     Args:
         file_path: Path to the CSV/Excel file.
     """
@@ -24,7 +25,7 @@ def validate_dataset(file_path: str):
 
     print(f"\n--- Validation Report: {path.name} ---")
     print(f"Rows: {df.shape[0]}, Columns: {df.shape[1]}")
-    
+
     # Check nulls
     nulls = df.isnull().sum()
     if nulls.any():
@@ -40,6 +41,7 @@ def validate_dataset(file_path: str):
     # Data types summary
     print("\nData Types:")
     print(df.dtypes)
+
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Sanity check for datasets.")

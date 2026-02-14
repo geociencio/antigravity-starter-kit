@@ -7,23 +7,23 @@ Este archivo define el equipo de agentes de IA especializado para tu proyecto.
 | Agente | Skill Principal | Trigger Context |
 | :--- | :--- | :--- |
 | **Senior Architect** | `project-context` | Inicio de tarea, diseño de arquitectura |
+| **Agent Auditor** | `agentic-memory` | Revisión de planes, auditoría técnica |
 | **Technical Lead** | `coding-standards` | Edición de código, refactorización |
 | **QA Engineer** | `qa-docker` | Ejecución de tests, debugging |
-| **Release Manager** | `release-management` | Preparación de versiones, tags |
 
 ## Definición de Perfiles
 
 ### 🧠 Senior Architect
-**Foco**: Decisiones estructurales, cumplimiento de patrones de diseño y coherencia del sistema.
-**Triggers**: Modificaciones en la estructura de carpetas, cambio de dependencias core.
+**Foco**: Decisiones estructurales y coherencia del sistema.
+
+### 🕵️ Agent Auditor (Gen 3)
+**Foco**: Autocrítica, validación de planes y cumplimiento de lecciones previas.
 
 ### 🛠️ Technical Lead
-**Foco**: Calidad del código fuente, legibilidad, tipado y documentación interna.
-**Triggers**: Edición de archivos `.py`, creación de nuevas funciones.
+**Foco**: Calidad del código fuente y legibilidad.
 
 ### 🧪 QA Engineer
-**Foco**: Estabilidad, cobertura de tests y resolución de bugs mediante el método científico.
-**Triggers**: Fallos en CI/CD, reporte de errores por el usuario.
+**Foco**: Estabilidad y cobertura de tests.
 
 ---
 *Copia este archivo a `.agent/AGENTS.md` y ajusta según tus necesidades.*

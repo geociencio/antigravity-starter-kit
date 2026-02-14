@@ -1,11 +1,20 @@
 """Template for a programmatic PyQt dialog in QGIS."""
 
-from qgis.PyQt.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton, QComboBox
+from qgis.PyQt.QtWidgets import (
+    QDialog,
+    QVBoxLayout,
+    QHBoxLayout,
+    QLabel,
+    QLineEdit,
+    QPushButton,
+    QComboBox,
+)
 from qgis.PyQt.QtCore import Qt
+
 
 class ModernDialog(QDialog):
     """A premium, programmatically created dialog."""
-    
+
     def __init__(self, parent=None):
         super().__init__(parent)
         self.setWindowTitle("Antigravity - Modern Dialog")
@@ -36,7 +45,9 @@ class ModernDialog(QDialog):
         mode_layout = QHBoxLayout()
         mode_label = QLabel("Interpolation Mode:")
         self.mode_combo = QComboBox()
-        self.mode_combo.addItems(["Inverse Distance Weighting", "Kriging", "Nearest Neighbor"])
+        self.mode_combo.addItems(
+            ["Inverse Distance Weighting", "Kriging", "Nearest Neighbor"]
+        )
         mode_layout.addWidget(mode_label)
         mode_layout.addWidget(self.mode_combo)
         layout.addLayout(mode_layout)
@@ -45,11 +56,13 @@ class ModernDialog(QDialog):
         button_layout = QHBoxLayout()
         self.btn_cancel = QPushButton("Cancel")
         self.btn_run = QPushButton("Run Action")
-        self.btn_run.setStyleSheet("background-color: #6f42c1; color: white; font-weight: bold; border-radius: 4px; padding: 8px;")
-        
+        self.btn_run.setStyleSheet(
+            "background-color: #6f42c1; color: white; font-weight: bold; border-radius: 4px; padding: 8px;"
+        )
+
         self.btn_cancel.clicked.connect(self.reject)
         self.btn_run.clicked.connect(self.accept)
-        
+
         button_layout.addStretch()
         button_layout.addWidget(self.btn_cancel)
         button_layout.addWidget(self.btn_run)
@@ -59,15 +72,14 @@ class ModernDialog(QDialog):
 
     def get_data(self):
         """Return the user input."""
-        return {
-            "layer": self.layer_input.text(),
-            "mode": self.mode_combo.currentText()
-        }
+        return {"layer": self.layer_input.text(), "mode": self.mode_combo.currentText()}
+
 
 if __name__ == "__main__":
     # For standalone testing with PyQt
     import sys
     from qgis.PyQt.QtWidgets import QApplication
+
     app = QApplication(sys.argv)
     dlg = ModernDialog()
     if dlg.exec_():

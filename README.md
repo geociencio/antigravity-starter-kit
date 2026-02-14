@@ -1,19 +1,20 @@
 # {{PROJECT_NAME}} 🚀
 
-![Framework](https://img.shields.io/badge/framework-Antigravity%20Gen%202-6f42c1?style=for-the-badge)
-
-[![Version](https://img.shields.io/badge/version-1.0.0-blue.svg)](#)
+[![Framework](https://img.shields.io/badge/framework-Antigravity%20Gen%204-6f42c1?style=for-the-badge)](#)
+[![Version](https://img.shields.io/badge/version-4.0.0--dev-blue.svg)](#)
 [![Python](https://img.shields.io/badge/python-3.10+-3776AB?logo=python&logoColor=white)](#)
 [![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
 [![License](https://img.shields.io/badge/license-GPL--3.0-orange.svg)](LICENSE)
 
-Este es el template oficial para iniciar proyectos de software (Python/QGIS) con una arquitectura enfocada en **Agentes de IA**.
+Este es el template oficial para iniciar proyectos de software con una arquitectura de **Agentes de IA de 4ª Generación**.
 
-## 🧠 Filosofía
-Antigravity no es solo código, es un sistema de colaboración Humano-IA que utiliza:
-- **Workflows**: Guías de pasos para tareas comunes.
-- **Skills**: Paquetes de conocimiento especializado para el agente.
-- **Autoconsciencia**: Análisis continuo del contexto del proyecto.
+## 🧠 Filosofía (Gen 4)
+Antigravity Gen 4 introduce una **arquitectura evolutiva** que permite al agente:
+- **Evolucionar**: Skills nativas para migración tecnológica (ej: QGIS 4.x).
+- **Globalizar**: Estándares de i18n integrados desde el día 0.
+- **Autocorregir**: Workflows de limpieza automática (`/fix-linting`).
+- **Aprender**: Memoria semántica persistente en `.agent/memory/`.
+- **Auditar**: Autocrítica proactiva mediante el rol **Agent Auditor**.
 
 ## 🚀 Inicio Rápido
 

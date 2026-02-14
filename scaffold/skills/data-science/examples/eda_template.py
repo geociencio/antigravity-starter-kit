@@ -4,9 +4,10 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 
+
 def perform_eda(df: pd.DataFrame):
     """Run a standard exploratory analysis.
-    
+
     Args:
         df: The pandas DataFrame to analyze.
     """
@@ -15,10 +16,10 @@ def perform_eda(df: pd.DataFrame):
     print(df.describe())
 
     # 2. Correlation Matrix
-    numeric_df = df.select_dtypes(include=['number'])
+    numeric_df = df.select_dtypes(include=["number"])
     if not numeric_df.empty:
         plt.figure(figsize=(10, 8))
-        sns.heatmap(numeric_df.corr(), annot=True, cmap='coolwarm', fmt=".2f")
+        sns.heatmap(numeric_df.corr(), annot=True, cmap="coolwarm", fmt=".2f")
         plt.title("Correlation Matrix")
         plt.show()
 
@@ -31,12 +32,16 @@ def perform_eda(df: pd.DataFrame):
         plt.title(f"Distribution of {col}")
         plt.show()
 
+
 if __name__ == "__main__":
     # Example usage with dummy data
     import numpy as np
-    data = pd.DataFrame({
-        'feature_a': np.random.randn(100),
-        'feature_b': np.random.randn(100) * 2 + 5,
-        'target': np.random.randint(0, 2, 100)
-    })
+
+    data = pd.DataFrame(
+        {
+            "feature_a": np.random.randn(100),
+            "feature_b": np.random.randn(100) * 2 + 5,
+            "target": np.random.randint(0, 2, 100),
+        }
+    )
     perform_eda(data)
