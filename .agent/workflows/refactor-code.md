@@ -1,20 +1,20 @@
 ---
 description: Workflow guiado para refactorización de código con validación de complejidad
-agent: Senior Architect
-skills: [qgis-core, geological-logic]
+agent: Tech Lead
+skills: [coding-standards, project-context]
 validation: |
-  - Verificar que complejidad ciclomática se redujo (CC < 15)
-  - Confirmar que tests siguen pasando después de refactorización
-  - Validar que no se introdujeron violaciones de arquitectura
+  - Verificar que complejidad ciclomática general se redujo
+  - Confirmar que tests siguen pasando después de la refactorización
+  - Validar que no se introdujeron violaciones de arquitectura (Core vs UI)
 ---
 
-Este workflow guía la refactorización de código siguiendo los estándares del proyecto y usando conocimiento especializado de skills.
+Este workflow guía la refactorización de código siguiendo los estándares del proyecto y usando conocimiento arquitectónico.
 
 ## Cuándo Usar Este Workflow
 
-- Cuando `qgis-analyzer` detecta métodos con CC > 15
-- Cuando `AI_CONTEXT.md` identifica deuda técnica crítica
-- Antes de añadir nuevas funcionalidades a módulos complejos
+- Cuando analizadores de código estático (Sonarqube, ESLint, Ruff) detectan métodos muy complejos.
+- Cuando la arquitectura base se siente acoplada o difícil de testear.
+- Antes de añadir nuevas funcionalidades a módulos o clases muy extensas.
 
 
 ## Pasos de Refactorización
@@ -22,39 +22,42 @@ Este workflow guía la refactorización de código siguiendo los estándares del
 1. **Identificar Objetivo de Refactorización**:
    // turbo
    ```bash
-   qgis-analyzer analyze .
+   # EJEMPLO PYTHON: radon cc . -a
+   # EJEMPLO JS: eslint .
+   {{COMPLEXITY_CHECK_COMMAND}}
    ```
 
-   🤖 **Agent Action**: Analizar `analysis_results/PROJECT_SUMMARY.md` para identificar hotspots y deuda técnica.
+   🤖 **Agent Action**: Identificar hotspots y deuda técnica leyendo métricas o preguntando al usuario sobre los puntos de dolor actuales.
 
 2. **Cargar Contexto Especializado**:
 
-   🤖 **Agent Action**: Según el módulo, cargar skill apropiado (geological-logic, qgis-core, o ui-framework).
+   🤖 **Agent Action**: Leer `project-context` para entender los límites arquitectónicos del módulo que se va a refactorizar. Asegurar adherencia a `coding-standards`.
 
 3. **Aplicar Refactorización**:
 
-   🤖 **Agent Action**: Aplicar principios SOLID y reducir complejidad ciclomática.
+   🤖 **Agent Action**: Aplicar principios SOLID. Reducir complejidad ciclomática extrayendo métodos o moviendo lógica a clases/servicios dedicados. Mantener TDD si es posible.
 
 4. **Validar con Tests**:
    // turbo
    ```bash
-   make docker-test
+   # Ejecutar control completo de tests
+   {{MASTER_TEST_COMMAND}}
    ```
 
-   🤖 **Agent Action**: Usar skill **qa-docker** para asegurar que no hay regresiones.
+   🤖 **Agent Action**: Usar skill **qa-standards** para asegurar que no hay regresiones y que se mantienen/mejoran las pruebas unitarias afectadas.
 
 5. **Verificar Métricas de Calidad**:
    // turbo
    ```bash
-   qgis-analyzer analyze .
+   {{COMPLEXITY_CHECK_COMMAND}}
    ```
 
-   🤖 **Agent Action**: Confirmar mejora en el Quality Score y reducción de CC.
+   🤖 **Agent Action**: Confirmar mejora en las métricas y reducción de código "spaghetti".
 
 6. **Commit de Refactorización**:
-   Usar workflow `/crea-commit` con mensaje técnico estructurado.
+   Usar workflow `/crea-commit` con mensaje técnico estructurado, asegurando un prefijo `refactor:`.
 
 ## Resultado Esperado
-- Código más mantenible, testeable y con menor complejidad ciclomática.
-- Cero regresiones funcionales confirmadas por tests.
-- Documentación técnica (docstrings) actualizada.
+- Código más mantenible, testeable y con menor complejidad cognitiva.
+- Cero regresiones funcionales confirmadas por pruebas automatizadas.
+- Documentación técnica (docstrings/JSDoc) actualizada o mejorada.

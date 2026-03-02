@@ -1,21 +1,21 @@
 ---
 description: How to commit changes cleanly (handling hooks)
 agent: QA Engineer
-skills: [qa-docker, commit-standards]
+skills: [qa-standards, commit-standards]
 validation: |
-  - Verificar que ruff y black pasan sin errores
-  - Confirmar que ai-ctx analyze se ejecutó correctamente
+  - Verificar que los linters de formato pasan sin errores
+  - Confirmar que el código estático es válido
   - Validar que el mensaje de commit sigue Conventional Commits
 ---
 This workflow describes the process for committing changes, ensuring code quality standards are met without getting blocked by pre-commit hook conflicts.
 
 1. **Preparación y Limpieza (Automático)**:
-   Asegura que el código cumple con el estándar de ruff y black para evitar fallos en los hooks.
+   Asegura que el código cumple con el estándar de formato y linting para evitar fallos en los hooks.
    // turbo
    ```bash
-   uv run ruff check --fix .
-   uv run ruff format .
-   uv run black .
+   # EJEMPLO PYTHON: uv run ruff check --fix . && uv run ruff format .
+   # EJEMPLO JS: npm run lint:fix && npm run format
+   {{LINTER_FIX_COMMAND}}
    ```
 
 2. **Stage Changes**: Añade los archivos que deseas confirmar.
@@ -24,16 +24,17 @@ This workflow describes the process for committing changes, ensuring code qualit
    ```
 
 3. **Sincronización de Calidad (Guardián)**:
-   Registra el impacto de los cambios en el Cerebro del Proyecto antes de guardar.
+   Verifica el impacto estático del código antes de hacer commit.
    // turbo
    ```bash
-   uv run ai-ctx analyze --path .
+   # EJEMPLO: npm run build o un script de validación local
+   {{PRE_COMMIT_CHECK_COMMAND}}
    ```
 
    🤖 **Agent Action**: Analizar métricas de calidad y alertar si:
    - Complejidad ciclomática aumentó significativamente
-   - Docstring coverage bajó
-   - Se detectaron nuevas violaciones de QGIS compliance
+   - Cobertura de tests bajó (si aplica)
+   - Se detectaron nuevas violaciones arquitectónicas graves
 
 4. **Propuesta de Mensaje (Asistida por IA)**:
 
@@ -41,13 +42,13 @@ This workflow describes the process for committing changes, ensuring code qualit
    - Analizar cambios preparados (`git diff --cached`)
    - Generar 2-3 opciones de mensajes siguiendo Conventional Commits
    - Validar formato: tipo correcto, scope apropiado, inglés, imperativo
-   - Sugerir scope basado en archivos modificados (core, gui, export, etc.)
+   - Sugerir scope basado en archivos modificados (core, ui, api, etc.)
    - Alertar si hay breaking changes que requieren `!` o footer
 
    Ejemplo de sugerencias:
    ```text
-   Opción 1: refactor(core): reduce complexity in GeologyService.prepare_task_input
-   Opción 2: refactor(core): extract validation logic from GeologyService
+   Opción 1: refactor(core): reduce complexity in authentication service
+   Opción 2: feat(ui): add new user profile component
    ```
 
 5. **Commit**: Ejecuta el commit con el mensaje aprobado.
@@ -57,7 +58,7 @@ This workflow describes the process for committing changes, ensuring code qualit
 
    *Si el pre-commit hook persiste en fallar:*
    1. Revisa los mensajes de error detectados.
-   2. Ejecuta `git add` de nuevo si hubo cambios automáticos.
+   2. Ejecuta `git add` de nuevo si hubo cambios automáticos (linters).
    3. Repite el commit.
 
-**Filosofía**: Cada commit es una unidad de valor limpio, documentado y validado métricamente.
+**Filosofía**: Cada commit es una unidad de valor limpio, descriptivo y validado estáticamente.

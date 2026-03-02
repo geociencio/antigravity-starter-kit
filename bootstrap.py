@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """
 Bootstrap script for Antigravity-powered projects.
-Automates project name replacement and environment initialization.
+Automates project initialization and agentic setup.
 """
 
 import os
-import subprocess
 import sys
+import subprocess
 from pathlib import Path
 
 
@@ -19,91 +19,44 @@ def run_command(command, shell=True):
         return False
 
 
-def check_environment():
-    """Verify that the environment meets the minimum requirements."""
-    print("🔍 Checking environment...")
-
-    # 1. Python version check
-    if sys.version_info < (3, 10):
-        print(
-            f"  ❌ Error: Python 3.10+ is required (found {sys.version_info.major}.{sys.version_info.minor})"
-        )
-        return False
-    print("  ✅ Python 3.10+")
-
-    # 2. Check for uv
-    if not run_command("uv --version"):
-        print(
-            "  ❌ Error: `uv` is not installed. Please install it: https://github.com/astral-sh/uv"
-        )
-        return False
-    print("  ✅ uv found")
-
-    return True
-
-
 def setup_project():
     print("🚀 Antigravity Project Bootstrapper")
     print("-----------------------------------")
 
-    if not check_environment():
-        sys.exit(1)
-
     # Get project name
-    project_name = input(
-        "\nEnter the new project name (e.g., my-awesome-plugin): "
-    ).strip()
+    project_name = input("\nEnter the new project name (e.g., my-awesome-app): ").strip()
     if not project_name:
         print("❌ Error: Project name cannot be empty.")
         sys.exit(1)
 
-    # Files to process
+    # Replace Project Name in template files
     files_to_process = [
         Path("pyproject.toml"),
         Path("README.md"),
-        Path(".agent/AGENTS.md"),
+        Path("package.json") # In case it's a JS/TS project
     ]
 
-    # Placeholders
     placeholder_name = "{{PROJECT_NAME}}"
-    placeholder_dir = "{{PROJECT_DIR}}"
-    current_dir = str(Path.cwd().resolve())
 
-    print(f"\n📝 Replacing placeholders in {len(files_to_process)} files...")
+    print(f"\n📝 Replacing placeholders in base files...")
 
     for file_path in files_to_process:
         if file_path.exists():
             try:
                 content = file_path.read_text(encoding="utf-8")
-                updated = False
-                
-                # Replace Project Name
                 if placeholder_name in content:
                     content = content.replace(placeholder_name, project_name)
-                    updated = True
-                
-                # Replace Project Directory (for absolute paths in Agent Config)
-                if placeholder_dir in content:
-                    content = content.replace(placeholder_dir, current_dir)
-                    updated = True
-
-                if updated:
                     file_path.write_text(content, encoding="utf-8")
                     print(f"  ✅ Updated {file_path}")
-                else:
-                    print(f"  ⚠️  No placeholders found/updated in {file_path}")
             except Exception as e:
                 print(f"  ❌ Error processing {file_path}: {e}")
-        else:
-            print(f"  ⚠️  File {file_path} not found.")
 
-    # Initialize uv environment
-    print("\n📦 Initializing environment with `uv sync`...")
-    if run_command("uv sync"):
-        print("  ✅ Environment initialized successfully.")
-    else:
-        print("  ❌ Error: Failed to run `uv sync`.")
-        sys.exit(1)
+    # Initialize Agentic Framework
+    agent_init_script = Path(".agent/init_agent_system.sh")
+    if agent_init_script.exists():
+        print("\n🤖 Initializing Agentic Framework...")
+        os.chmod(agent_init_script, 0o755)
+        subprocess.run([str(agent_init_script)], shell=False)
 
     # Git Initialization
     print("\n🐙 Git Initialization...")
@@ -119,13 +72,10 @@ def setup_project():
 
     print("\n✨ Bootstrap complete! Your project is ready.")
     print("Next steps:")
-    print("1. Explore AGENTS.md in scaffold/")
-    print("2. Run `/inicia-sesion` to start collaborating with your agent.")
+    print("1. Review '.agent/AGENTS.md' and customize your system.")
+    print("2. Run '/inicia-sesion' to start collaborating with your agent.")
 
-    # Self-destruct?
-    delete_self = input(
-        "\nDo you want to delete this bootstrap script? (y/N): "
-    ).lower()
+    delete_self = input("\nDo you want to delete this bootstrap script? (y/N): ").lower()
     if delete_self == "y":
         try:
             os.remove(__file__)

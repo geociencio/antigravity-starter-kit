@@ -1,12 +1,11 @@
 ---
 description: Procedimiento estándar y robusto para iniciar una sesión de desarrollo "Local First"
-agent: Senior Architect
-skills: [qgis-core, qa-docker]
+agent: Tech Lead
+skills: [project-context, qa-standards]
 validation: |
-  - Verificar que 361 tests pasen en Docker
-  - Confirmar que AI_CONTEXT.md está actualizado con métricas recientes
-
-  - Validar que no hay regresiones en complejidad ciclomática
+  - Verificar que los tests configurados pasen correctamente
+  - Confirmar que el contexto del AI está sincronizado
+  - Validar que no hay regresiones de calidad críticas
 ---
 
 Este workflow optimiza el inicio del desarrollo asegurando un entorno sincronizado, **contextualizado** y validado.
@@ -15,53 +14,45 @@ Este workflow optimiza el inicio del desarrollo asegurando un entorno sincroniza
     Actualiza y lee el contexto para entender "dónde nos quedamos".
     // turbo
     ```bash
-    ai-ctx analyze --path . && cat .agent/next_steps.md
+    cat .agent/next_steps.md
     ```
 
-    🤖 **Agent Action**: Revisar `AI_CONTEXT.md` y `project_context.json` usando skill **qgis-core** para identificar:
-    - Deuda técnica crítica relacionada con QGIS API
-    - Métodos con alta complejidad ciclomática (CC > 15)
-    - Violaciones de arquitectura (UI en Core)
+    🤖 **Agent Action**: Revisar `AI_CONTEXT.md` (si existe) y `project-context` para identificar:
+    - Deuda técnica crítica o decisiones arquitectónicas pendientes
+    - Violaciones de arquitectura
+    - Qué componente fue modificado en la sesión anterior
 
-
-    Revisa los siguientes archivos en este orden:
-    *   `docs/plans/implementation_plan_v2.8.0.md`: **Mapa de Ruta Maestro**. Fuente de verdad sobre tareas completadas.
+    Revisa los siguientes archivos en este orden (si existen en el proyecto):
+    *   `docs/ROADMAP.md`: **Mapa de Ruta Maestro**. Fuente de verdad sobre tareas completadas.
     *   `.agent/next_steps.md`: **El Testigo**. Punto exacto donde se detuvo la sesión anterior.
-    *   `AI_CONTEXT.md`: Memoria de largo plazo, métricas y directrices de alto nivel.
-    *   `project_context.json`: Datos estructurados de complejidad y dependencias.
-    *   `docs/DEVELOPMENT_LOG.md`: Ver resumen de la última sesión (orden cronológico inverso).
-
-    *   `docs/LOGGING_GUIDELINES.md`: Seguir estrictamente para registrar nuevas actividades.
-
+    *   `docs/DEVELOPMENT_LOG.md`: Ver resumen de la última sesión.
 
 2.  **Sincronización de Entorno (Local)**:
     Asegura dependencias actualizadas.
     // turbo
     ```bash
-    uv sync
+    # EJEMPLO PYTHON: uv sync
+    # EJEMPLO JS: npm install
+    {{SYNC_DEPENDENCIES_COMMAND}}
     ```
 
-    🤖 **Agent Action**: Verificar que no hay conflictos de dependencias relacionadas con PyQGIS.
+    🤖 **Agent Action**: Verificar que no hay conflictos de dependencias tras la actualización.
 
 3.  **Verificación de Estado (Sanity Check)**:
-    Confirma que el sistema está estable ("en verde"). Todos los tests (361) deben pasar.
+    Confirma que el sistema está estable ("en verde"). Los tests principales deben pasar.
 
-    *Opción A (Docker - Recomendado):*
     // turbo
     ```bash
-    make docker-test
+    # EJEMPLO PYTHON: make test
+    # EJEMPLO Gral: npm run test
+    {{MASTER_TEST_COMMAND}}
     ```
 
-    *Opción B (Local):*
-    ```bash
-    env PYTHONPATH=.. uv run python3 -m unittest discover tests
-    ```
-
-    🤖 **Agent Action**: Usar skill **qa-docker** para interpretar fallos de tests e identificar regresiones.
+    🤖 **Agent Action**: Usar skill **qa-standards** para interpretar posibles fallos en el estado base del proyecto (ramas rotas).
 
 ## Resultado Esperado
-- Entorno sincronizado y validado (361 tests OK).
-- Mapa mental claro de las tareas pendientes en `next_steps.md`.
-- Agente operando con los perfiles y skills correctos cargados.
+- Entorno local limpio, sincronizado y validado.
+- Mapa mental claro de las tareas pendientes (`next_steps.md`).
+- Agente operando con los perfiles, dependencias y skills correctos cargados.
 
-**Filosofía**: Empezar a codificar sabiendo *exactamente* qué pasó ayer y con el contexto especializado cargado.
+**Filosofía**: Empezar a codificar sabiendo *exactamente* qué pasó ayer y con la seguridad de que la rama no compila con errores.

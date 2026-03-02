@@ -1,60 +1,51 @@
-# Guía Rápida: Sistema de Workflows + Skills
+# Guía Rápida: Framework Agéntico Antigravity
 
-**Fecha de creación**: 2026-01-22
-**Versión**: 1.0
+**Versión**: 2.0 (Generic Template)
 
 ---
 
 ## 📋 Resumen Ejecutivo
 
-El proyecto SecInterp cuenta con un sistema completo de **6 skills** y **10 workflows** integrados que automatizan la invocación de agentes especializados y conocimiento contextual.
+El framework **Antigravity** proporciona un sistema base de **skills** y **workflows** integrados que automatizan la invocación de agentes especializados y conocimiento contextual para cualquier proyecto de desarrollo.
 
 ---
 
-## 🛠️ Skills Disponibles (6)
+## 🛠️ Skills Base Disponibles
 
 | Skill | Descripción | Cuándo Usar |
 |:------|:------------|:------------|
-| [commit-standards](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/skills/commit-standards/SKILL.md) | Estándares de Conventional Commits | Al crear commits, validar mensajes |
-| [geological-logic](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/skills/geological-logic/SKILL.md) | Lógica geológica y validación 3-niveles | Al trabajar con drillholes, interpolación |
-| [qa-docker](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/skills/qa-docker/SKILL.md) | Testing en Docker y mocks QGIS | Al escribir/ejecutar tests, usar mocks |
-| [qgis-core](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/skills/qgis-core/SKILL.md) | QGIS API y estructura de plugins | Al trabajar con PyQGIS, QgsTask |
-| [release-management](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/skills/release-management/SKILL.md) | Proceso de release QGIS | Al preparar releases, versionar |
-| [ui-framework](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/skills/ui-framework/SKILL.md) | UI programática y estética premium | Al modificar GUI, layouts, CSS |
+| [commit-standards](file:///home/jmbernales/qgispluginsdev/sec_interp/antigravity-framerepo/.agent/skills/commit-standards/SKILL.md) | Estándares de Conventional Commits | Al crear commits, validar mensajes |
+| [coding-standards](file:///home/jmbernales/qgispluginsdev/sec_interp/antigravity-framerepo/.agent/skills/coding-standards/SKILL.md) | Formateo, tipado y estilo de código | Al escribir o refactorizar código |
+| [qa-standards](file:///home/jmbernales/qgispluginsdev/sec_interp/antigravity-framerepo/.agent/skills/qa-standards/SKILL.md) | Testing, CI/CD y Mocks | Al escribir/ejecutar tests |
+| [project-context](file:///home/jmbernales/qgispluginsdev/sec_interp/antigravity-framerepo/.agent/skills/project-context/SKILL.md) | Arquitectura y propósito del proyecto | Al iniciar tareas o necesitar contexto global |
+| [release-management](file:///home/jmbernales/qgispluginsdev/sec_interp/antigravity-framerepo/.agent/skills/release-management/SKILL.md) | Proceso de release y Semantic Versioning | Al preparar releases, versionar |
+
+> 💡 **Nota:** Puedes añadir tus propias skills de dominio en la carpeta `.agent/skills/`.
 
 ---
 
-## 🔄 Workflows Disponibles (10)
+## 🔄 Workflows Base Disponibles
 
 ### Desarrollo Diario
 
 | Workflow | Agent | Skills | Propósito |
 |:---------|:------|:-------|:----------|
-| [/inicia-sesion](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/workflows/inicia-sesion.md) | Senior Architect | qgis-core, qa-docker | Iniciar sesión con contexto sincronizado |
-| [/crea-commit](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/workflows/crea-commit.md) | QA Engineer | qa-docker, commit-standards | Commit con validación de calidad |
-| [/run-tests](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/workflows/run-tests.md) | QA Engineer | qa-docker | Ejecutar tests con interpretación inteligente |
-| [/cierra-sesion](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/workflows/cierra-sesion.md) | QA Engineer | qa-docker, commit-standards | Cerrar sesión con logs actualizados |
+| [/inicia-sesion](file:///home/jmbernales/qgispluginsdev/sec_interp/antigravity-framerepo/.agent/workflows/inicia-sesion.md) | Tech Lead | project-context, qa-standards | Iniciar sesión con contexto sincronizado |
+| [/crea-commit](file:///home/jmbernales/qgispluginsdev/sec_interp/antigravity-framerepo/.agent/workflows/crea-commit.md) | QA Engineer | qa-standards, commit-standards | Commit con validación de calidad |
+| [/run-tests](file:///home/jmbernales/qgispluginsdev/sec_interp/antigravity-framerepo/.agent/workflows/run-tests.md) | QA Engineer | qa-standards | Ejecutar tests con interpretación inteligente |
+| [/cierra-sesion](file:///home/jmbernales/qgispluginsdev/sec_interp/antigravity-framerepo/.agent/workflows/cierra-sesion.md) | QA Engineer | qa-standards, commit-standards | Cerrar sesión con logs actualizados |
 
 ### Refactorización y Calidad
 
 | Workflow | Agent | Skills | Propósito |
 |:---------|:------|:-------|:----------|
-| [/refactor-code](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/workflows/refactor-code.md) | Senior Architect | qgis-core, geological-logic | Refactorizar código con validación de complejidad |
-| [/run-tests-in-qgis](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/workflows/run-tests-in-qgis.md) | QA Engineer | qa-docker | Tests de integración en QGIS real |
+| [/refactor-code](file:///home/jmbernales/qgispluginsdev/sec_interp/antigravity-framerepo/.agent/workflows/refactor-code.md) | Tech Lead | coding-standards, project-context | Refactorizar código con validación de complejidad |
 
 ### Release Management
 
 | Workflow | Agent | Skills | Propósito |
 |:---------|:------|:-------|:----------|
-| [/release-plugin](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/workflows/release-plugin.md) | QA Engineer | release-management, qa-docker, commit-standards | Release completo (español) |
-| [/release-plugin-en](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/workflows/release-plugin-en.md) | QA Engineer | release-management, qa-docker, commit-standards | Release completo (inglés) |
-
-### Gestión de Fases
-
-| Workflow | Agent | Skills | Propósito |
-|:---------|:------|:-------|:----------|
-| [/inicia-fase](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/workflows/inicia-fase.md) | Senior Architect | qgis-core, geological-logic, qa-docker | Iniciar fase mayor con planificación |
-| [/cierra-fase](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/workflows/cierra-fase.md) | Senior Architect | qgis-core, qa-docker | Cerrar fase con métricas y retrospectiva |
+| [/release-project](file:///home/jmbernales/qgispluginsdev/sec_interp/antigravity-framerepo/.agent/workflows/release-plugin.md) | QA Engineer | release-management, qa-standards, commit-standards | Release completo del proyecto |
 
 ---
 
@@ -65,12 +56,11 @@ El proyecto SecInterp cuenta con un sistema completo de **6 skills** y **10 work
 /inicia-sesion
 ```
 **Qué hace**:
-- Activa "Senior Architect Agent"
-- Carga skills: qgis-core, qa-docker
-- Sincroniza contexto (AI_CONTEXT.md, project_context.json, next_steps.md)
-
-- Ejecuta `make docker-test` (361 tests)
-- Valida métricas de calidad
+- Activa "Tech Lead Agent"
+- Carga skills: project-context, qa-standards
+- Sincroniza contexto base.
+- Ejecuta los tests configurados en el proyecto.
+- Valida métricas de calidad iniciales.
 
 ### Crear Commit con Validación
 ```bash
@@ -78,62 +68,27 @@ El proyecto SecInterp cuenta con un sistema completo de **6 skills** y **10 work
 ```
 **Qué hace**:
 - Activa "QA Engineer Agent"
-- Carga skills: qa-docker, commit-standards
-- Ejecuta ruff/black
-- Analiza métricas (ai-ctx analyze)
-- Genera 2-3 opciones de mensaje siguiendo Conventional Commits
-- Valida formato y scope
+- Carga skills: qa-standards, commit-standards
+- Ejecuta linters/formatters.
+- Genera 2-3 opciones de mensaje siguiendo Conventional Commits.
+- Valida formato y scope.
 
 ### Refactorizar Código Complejo
 ```bash
 /refactor-code
 ```
 **Qué hace**:
-- Activa "Senior Architect Agent"
-- Carga skills: qgis-core, geological-logic
-- Analiza qgis-analyzer para CC > 15
-- Aplica principios de qgis-core (QgsTask, separación UI/Core)
-- Valida que complejidad bajó y tests pasan
-
-### Preparar Release
-```bash
-/release-plugin
-```
-**Qué hace**:
-- Activa "QA Engineer Agent"
-- Carga skills: release-management, qa-docker, commit-standards
-- Ejecuta 5 fases: Calidad → Versionamiento → Verificación → Git → Distribución
-- Valida 361 tests, sincroniza versiones, genera ZIP
-- Crea GitHub release draft
+- Activa "Tech Lead Agent"
+- Carga skills: coding-standards, project-context
+- Analiza la complejidad del código.
+- Aplica principios de diseño definidos en project-context.
+- Valida que la complejidad bajó y los tests pasan.
 
 ---
 
-## 📊 Métricas del Sistema
+## 🔧 Extensibilidad y Personalización
 
-**Estado Actual**:
-- ✅ 6 skills sincronizadas
-- ✅ 10 workflows con metadata completa (100%)
-- ✅ 0 workflows legacy
-- ✅ Todos los skills referenciados validados
-
-**Tests**:
-- 361 tests totales
-- 100% success rate en Docker
-- Cobertura completa de mocking QGIS
-
-**Calidad**:
-- Code Maintainability Score: 100/100
-- Overall Plugin Score: 27.6/100 (qgis-analyzer)
-- ai-ctx Quality Score: 54.6/100
-
----
-
-## 🔧 Mantenimiento
-
-### Sincronizar Skills y Workflows
-```bash
-uv run python3 scripts/skill_sync.py
-```
+Para adaptar este framework a tu proyecto:
 
 ### Añadir Nueva Skill
 1. Crear directorio: `.agent/skills/[nombre-skill]/`
@@ -146,7 +101,7 @@ uv run python3 scripts/skill_sync.py
    scope: root
    ---
    ```
-3. Ejecutar `skill_sync.py`
+3. Ejecutar `skill_sync.py` (si está configurado) o actualizar `AGENTS.md` manualmente.
 
 ### Añadir Nuevo Workflow
 1. Crear archivo: `.agent/workflows/[nombre].md`
@@ -154,25 +109,23 @@ uv run python3 scripts/skill_sync.py
    ```yaml
    ---
    description: Descripción del workflow
-   agent: Senior Architect | QA Engineer
+   agent: Tech Lead | QA Engineer
    skills: [skill1, skill2]
    validation: |
      - Checkpoint 1
      - Checkpoint 2
    ---
    ```
-3. Añadir anotaciones `🤖 **Agent Action**` en pasos clave
-4. Ejecutar `skill_sync.py`
+3. Añadir anotaciones `🤖 **Agent Action**` en pasos clave.
 
 ---
 
 ## 📚 Referencias
 
-- [AGENTS.md](file:///home/jmbernales/qgispluginsdev/sec_interp/.agent/AGENTS.md) - Definición completa de agentes y skills
-- [Walkthrough Completo](file:///home/jmbernales/.gemini/antigravity/brain/fe1d94d9-ce70-4d55-a314-e8970f56c6d4/walkthrough.md) - Documentación detallada de la integración
-- [Implementation Plan](file:///home/jmbernales/.gemini/antigravity/brain/fe1d94d9-ce70-4d55-a314-e8970f56c6d4/implementation_plan.md) - Plan original de integración
+- [AGENTS.md](file:///home/jmbernales/qgispluginsdev/sec_interp/antigravity-framerepo/.agent/AGENTS.md) - Definición completa de agentes y matriz de skills.
 
 ---
 
-**Última actualización**: 2026-01-22
-**Versión del sistema**: 1.0 (Integración completa)
+**Última actualización**: 2026-03-01
+**Versión del sistema**: 2.0 (Agnostic Template)
+

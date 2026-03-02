@@ -1,24 +1,22 @@
-# Memoria de Aprendizaje del Agente (SecInterp)
+# Memoria de Aprendizaje del Agente
 
-Este archivo registra lecciones técnicas, preferencias del usuario y soluciones a problemas complejos encontrados durante el desarrollo. Sirve como memoria semántica para evitar repetir errores y optimizar decisiones futuras.
+Este archivo registra lecciones técnicas, preferencias del usuario y soluciones a problemas complejos encontrados durante el desarrollo. Sirve como memoria semántica para evitar repetir errores y optimizar decisiones futuras a través de las sesiones de IA.
 
 ## 🧠 Lecciones Críticas
 
-### Infraestructura Agentica (2026-02-01)
-- **Lección**: La sobre-simplificación de Skills durante refactorizaciones lingüísticas puede causar pérdida de manuales técnicos críticos (ej. `release-management`).
-- **Acción**: Mantener siempre el "músculo" técnico en inglés mientras se traduce la estructura operativa al español.
+(Añade aquí las lecciones arquitectónicas o de infraestructura descubiertas durante el desarrollo).
 
 ### Arquitectura de Tests
-- **Lección**: El mocking de `QgsGeometry` en entornos sin QGIS instalado requiere cuidado con métodos específicos como `pointN` o `is3D`.
-- **Preferencia**: El usuario prefiere `unittest` estricto sobre `pytest` para este proyecto.
+- **Lección**: [Ejemplo] Las simulaciones de base de datos requieren configuración explícita en el entorno CI.
+- **Preferencia**: [Ejemplo] El usuario prefiere `vitest` sobre `jest` para este proyecto.
 
 ## ⚙️ Preferencias del Usuario
-- **Idioma**: Comunicación y gestión en Español; código y commits en Inglés.
-- **Formateo**: Uso obligatorio de `black` y gestión de dependencias con `uv`.
-- **UI**: Diseño programático (sin archivos `.ui`) para mayor control y estética premium.
+(Documenta aquí preferencias de estilo, idiomas o herramientas que la IA debe recordar).
+- **Idioma**: Comunicación en Español; código y commits en Inglés.
+- **Formateo**: [Ejemplo] Uso obligatorio de `prettier` y gestión con `npm`.
 
 ## 🛠️ Soluciones a Hotspots
-- (Pendiente de registro tras próximas sesiones de refactorización).
+(Registro de parches o soluciones atípicas a bugs evasivos).
 
 ---
-*Última actualización: 2026-02-01*
+*Última actualización: {{CURRENT_DATE}}*

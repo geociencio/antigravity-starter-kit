@@ -1,53 +1,43 @@
 ---
 name: coding-standards
-description: Estándares de codificación del proyecto, enfocados en el uso de pathlib, docstrings de Google y tipado estricto.
-trigger: al escribir código Python, realizar refactorizaciones o definir rutas de archivos.
+description: Estándares de codificación, formato, convenciones de nomenclatura y calidad general del código.
+trigger: al escribir código nuevo, realizar refactorizaciones o proponer patrones de diseño.
 ---
 
 # Estándares de Codificación
 
-Define las normas técnicas para asegurar un código Python moderno, mantenible y coherente en todo el plugin SecInterp.
+Define las normas técnicas para asegurar un código moderno, mantenible y coherente de acuerdo con las convenciones del lenguaje y framework utilizado en el proyecto.
 
 ## Cuándo usar este skill
-- Al crear nuevos módulos o funciones en Python.
+- Al crear nuevos componentes, módulos o funciones.
 - Al realizar refactorizaciones de código existente.
-- Al definir rutas de archivos o manipular el sistema de archivos.
+- Al revisar *Pull Requests* o evaluar calidad de código.
 
 ## Grado de Libertad
-- **Estricto**: El uso de `pathlib`, Google Docstrings y Type Hints es obligatorio.
+- **Estricto**: El código debe adherirse a los linters configurados en el proyecto y a las mejores prácticas de la industria (SOLID, DRY, KISS).
 
 ## Workflow
-1. **Tipado**: Añadir anotaciones de tipos (Type Hints) a todos los argumentos y retornos.
-2. **Documentación**: Redactar docstrings siguiendo el formato de Google.
-3. **Rutas**: Reemplazar manipulaciones de strings u `os.path` por objetos `pathlib.Path`.
-4. **Validación**: Ejecutar `black .` y `ruff check .` para confirmar el cumplimiento.
+1. **Diseño Cuidado**: Planificar la estructura y tipos de datos antes de escribir la lógica.
+2. **Implementación Constreñida**: Seguir las convenciones de *naming* y estructura del proyecto.
+3. **Documentación Activa**: Escribir comentarios aclaratorios (docstrings, JSDoc) según el estándar del lenguaje.
+4. **Validación Automática**: Ejecutar los linters y formatters obligatorios (`{{LINTER_COMMAND}}`).
 
 ## Instrucciones y Reglas
 
-### Modern Python (Pathlib)
-- NUNCA usar concatenación de strings para rutas.
-- Usar `/` para unir rutas con `Path`.
-- Ejemplo: `base_dir / "data" / "file.txt"`.
+### Modernidad y Seguridad
+- Preferir APIs modernas del lenguaje (ej. `pathlib` en Python, manipulación inmutable de arrays en JS/TS).
+- Evitar *magic strings* y *magic numbers*; extraer a constantes.
 
-### Documentación (Google Style)
-```python
-def function(arg1: int) -> str:
-    """Resumen corto.
-
-    Args:
-        arg1: Descripción del argumento.
-
-    Returns:
-        Descripción del retorno.
-    """
-```
+### Documentación y Tipado
+- Utilizar sistemas de tipado estático siempre que el lenguaje lo soporte (TypeScript, Type Hints en Python, typing extendido).
+- Documentar funciones públicas: propósito del método, argumentos esperados y valor de retorno, especialmente si el comportamiento es complejo o expuesto en un API.
 
 ### Calidad de Código
-- Seguir principios SOLID.
-- Mantener la complejidad ciclomática por debajo de 15.
+- **Complejidad Ciclomática**: Mantener métodos y funciones pequeños (idealmente < 15 en métricas de complejidad).
+- **Responsabilidad Única**: Separar la lógica de interfaz de usuario de la lógica de negocio subyacente.
 
 ## Checklist de Calidad
-- [ ] ¿Se usa `pathlib` para todas las rutas?
-- [ ] ¿Todas las funciones tienen Type Hints?
-- [ ] ¿Los docstrings siguen el formato de Google?
-- [ ] ¿El código pasa el chequeo de `ruff` y `black`?
+- [ ] ¿El código refleja los principios SOLID?
+- [ ] ¿Se utilizaron anotaciones de tipos consistentes?
+- [ ] ¿Las funciones/clases clave están debidamente documentadas?
+- [ ] ¿El código pasa limpiamente el chequeo del linter y auto-formateador configurado en el proyecto?
